@@ -9,6 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "d3": "^6.3.1",
+    "d3-tip": "^0.9.1",
+    "d3-v6-tip": "^1.0.8",
+    "moment": "^2.29.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

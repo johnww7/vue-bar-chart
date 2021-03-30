@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Chart :chartData="chartData" ></Chart>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Chart from './components/Chart.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Chart,
+  },
+  data () {
+    return {
+      chartData: {},
+    };
+  },
+  beforeMount() {
+    this.getChartData();
+  },
+  methods: {
+    async getChartData() {
+      const response = await fetch("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json");
+      const data = await response.json();
+      console.log("API data: " + JSON.stringify(data.data.length));
+      this.chartData = data;
+      console.log('what: ' + JSON.stringify(this.chartData))
+    }
   }
 }
 </script>
